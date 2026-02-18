@@ -115,7 +115,7 @@ public function __construct(int $userId)
 Используйте атрибут `#[Validatable]` для вложенных объектов.
 
 ```php
-use Bitrix\Main\Validation\Rule\Composite\Validatable;
+use Bitrix\Main\Validation\Rule\Recursive\Validatable;
 use Bitrix\Main\Validation\Rule\NotEmpty;
 use Bitrix\Main\Validation\Rule\PositiveNumber;
 class Buyer
