@@ -141,7 +141,7 @@ items:
     items:
       - name: Концепция ORM
         href: /pages/orm/orm-concepts.md
-      - name: Операции с сущностями
+      - name: Операции с сущностями и события
         href: /pages/orm/entity-operations.md
       - name: Объекты
         href: /pages/orm/objects.md
