@@ -22,7 +22,8 @@ title: Что нового
 
 #### 19 февраля
 
--  Добавили описание преобразования данных в статью [Request и Response](./pages/framework/request-response.md#converter).
+- Добавили описание преобразования данных в статью [Request и Response](./pages/framework/request-response.md#converter).
+- Описали как обработать элементы коллекции в статье [Коллекции](./pages/orm/collections.md#walk).
 
 #### 10 февраля
 
@@ -30,7 +31,7 @@ title: Что нового
 
 #### 6 февраля
 
--  Добавили новую статью [Временное хранение](./pages/framework/storage.md).
+- Добавили новую статью [Временное хранение](./pages/framework/storage.md).
 
 #### 5 февраля
 
