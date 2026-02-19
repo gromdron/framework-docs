@@ -20,6 +20,10 @@ title: Что нового
 
 ### 2026
 
+#### 19 февраля
+
+-  Добавили описание преобразования данных в статью [Request и Response](./pages/framework/request-response.md#converter).
+
 #### 10 февраля
 
 - Добавили новый раздел [Расширенные знания](./pages/advanced/datetime.md).
