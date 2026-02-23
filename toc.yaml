@@ -31,14 +31,6 @@ navigation:
         type: 'link'
         url: '/whats-new.html'
 
-      #- text: 'Основы CMS'
-      #  type: 'link'
-      #  url: '#'
-
-      #- text: 'Модули'
-      #  type: 'link'
-      #  url: '#'
-
     rightItems:
       - type: controls
 
@@ -51,10 +43,7 @@ items:
         href: /pages/about/cms-comparison.md
       - name: Отличия от других фреймворков
         href: /pages/about/framework-comparison.md
-      - name: Правки в документации
-        href: change-article.md
-        hidden: true
-      - name: Чего нового
+      - name: Что нового
         href: whats-new.md
         hidden: true
       - name: Страница 404
@@ -132,6 +121,8 @@ items:
         href: /pages/framework/events.md
       - name: Очереди сообщений
         href: /pages/framework/messenger.md
+      - name: Временное хранение
+        href: /pages/framework/storage.md
       - name: Консольные команды
         href: /pages/framework/console-commands.md
 
@@ -158,7 +149,7 @@ items:
     items:
       - name: Концепция ORM
         href: /pages/orm/orm-concepts.md
-      - name: Операции с сущностями
+      - name: Операции с сущностями и события
         href: /pages/orm/entity-operations.md
       - name: Объекты
         href: /pages/orm/objects.md
@@ -201,6 +192,31 @@ items:
         href: /pages/cms-basics/userfields.md
       - name: Панель администрирования
         href: /pages/cms-basics/admin-panel.md
+
+  - name: Расширенные знания
+    items:
+      - name: Дата и время
+        href: /pages/advanced/datetime.md
+      - name: Локализация
+        href: /pages/advanced/localization.md
+      - name: Отладка
+        href: /pages/advanced/debug.md
+      - name: Резервное копирование
+        href: /pages/advanced/backup.md
+      - name: Логгеры
+        href: /pages/advanced/logger.md
+      - name: Идентификатор UUID
+        href: /pages/advanced/uuid.md
+      - name: Итератор
+        href: /pages/advanced/stepper.md
+      - name: Работа с изображениями
+        href: /pages/advanced/images.md
+      - name: Геолокация
+        href: /pages/advanced/geolocation.md
+      - name: Нумератор
+        href: /pages/advanced/numerator.md
+      - name: Пользовательские соглашения
+        href: /pages/advanced/user-consent.md
 
   - name: Безопасность
     items:
@@ -256,3 +272,7 @@ items:
           href: /pages/modules/iblocks/api.md
         - name: Производительность и частые ошибки
           href: /pages/modules/iblocks/performance.md
+  - name: Обратная связь
+    href: feedback.md
+  - name: Контрибьюторам
+    href: CONTRIBUTING.md

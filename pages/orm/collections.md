@@ -3,7 +3,7 @@ title: Коллекции
 description: 'Коллекции. ORM Bitrix Framework: ключевые концепции, примеры и рекомендации.'
 ---
 
-Коллекция -- специальный тип массива, который оптимизирует работу с объектами одного типа. Она позволяет выполнять групповые операции более эффективно.
+Коллекция — специальный тип массива, который оптимизирует работу с объектами одного типа. Она позволяет выполнять групповые операции более эффективно.
 
 Основные характеристики коллекции:
 
@@ -20,11 +20,11 @@ $books = \Bitrix\Main\Test\Typography\BookTable::getList()
     ->fetchCollection();
 ```
 
-`$books` -- это коллекция объектов класса `Book` с методами для групповых операций.
+`$books` — это коллекция объектов класса `Book` с методами для групповых операций.
 
 ## Класс коллекции
 
-У каждой сущности есть свой класс коллекции, наследуемый от `Bitrix\Main\ORM\Objectify\Collection`. Класс создается автоматически. Для объектов `Book` он имеет название `EO_Book_Collection`, где `EO_` -- это аббревиатура от `EntityObject`*.* Префикс `EO_` добавлен для уникальности , чтобы предотвратить конфликты с существующими классами.
+У каждой сущности есть свой класс коллекции, наследуемый от `Bitrix\Main\ORM\Objectify\Collection`. Класс создается автоматически. Для объектов `Book` он имеет название `EO_Book_Collection`, где `EO_` — это аббревиатура от `EntityObject`*.* Префикс `EO_` добавлен для уникальности , чтобы предотвратить конфликты с существующими классами.
 
 Чтобы задать свой класс, создайте наследника и укажите его в классе `Table` сущности.
 
@@ -38,22 +38,22 @@ class Books extends EO_Book_Collection
 
 -  Класс `Books` наследует класс `EO_Book_Collection`.
 
-```php
-// Файл bitrix/modules/main/lib/test/typography/booktable.php
-namespace Bitrix\Main\Test\Typography;
-class BookTable extends Bitrix\Main\ORM\Data\DataManager
-{
-    public static function getCollectionClass()
+    ```php
+    // Файл bitrix/modules/main/lib/test/typography/booktable.php
+    namespace Bitrix\Main\Test\Typography;
+    class BookTable extends Bitrix\Main\ORM\Data\DataManager
     {
-        return Books::class;
+        public static function getCollectionClass()
+        {
+            return Books::class;
+        }
+        //...
     }
-    //...
-}
-```
+    ```
 
 -  Класс `BookTable` наследует класс `Bitrix\Main\ORM\Data\DataManager`.
 
--  Cтатический метод `getCollectionClass` возвращает `Books` -- имя класса коллекции, связанной с `BookTable`.
+-  Cтатический метод `getCollectionClass` возвращает `Books` — имя класса коллекции, связанной с `BookTable`.
 
 Теперь метод `fetchCollection` возвращает коллекцию `Books`, что упрощает работу с объектами `Book`.
 
@@ -68,7 +68,8 @@ class BookTable extends Bitrix\Main\ORM\Data\DataManager
 ```php
 $books = \Bitrix\Main\Test\Typography\BookTable::getList()
     ->fetchCollection();
-foreach ($books as $book) {
+foreach ($books as $book)
+{
     // ...
 }
 ```
@@ -85,7 +86,7 @@ echo $bookObjects[0]->getId();
 // выведет значение ID первого объекта
 ```
 
-Если нужно получить не сами объекты, а их данные в виде массива, следует использовать метод `collectValues`. Метод преобразует коллекцию в ассоциативный массив, где ключами являются первичные ключи объектов, а значениями -- массивы данных, полученные из каждого объекта. Если элементы коллекции имеют составной первичный ключ, он будет преобразован в строку с использованием правил `\Bitrix\Main\ORM\Objectify\Collection::sysGetPrimaryKey`.
+Если нужно получить не сами объекты, а их данные в виде массива, следует использовать метод `collectValues`. Метод преобразует коллекцию в ассоциативный массив, где ключами являются первичные ключи объектов, а значениями — массивы данных, полученные из каждого объекта. Если элементы коллекции имеют составной первичный ключ, он будет преобразован в строку с использованием правил `\Bitrix\Main\ORM\Objectify\Collection::sysGetPrimaryKey`.
 
 ```php
 $bookCollection = \Bitrix\Main\Test\Typography\BookTable::getList()->fetchCollection(); 
@@ -118,7 +119,8 @@ $book2 = \Bitrix\Main\Test\Typography\Book::wakeUp(2);
 $books = \Bitrix\Main\Test\Typography\BookTable::query()
     ->addSelect('*')
     ->whereIn('ID', [2, 3, 4])
-    ->fetchCollection();
+    ->fetchCollection()
+;
 var_dump($books->has($book1)); // false
 var_dump($books->has($book2)); // true
 ```
@@ -129,7 +131,8 @@ var_dump($books->has($book2)); // true
 $books = \Bitrix\Main\Test\Typography\BookTable::query()
     ->addSelect('*')
     ->whereIn('ID', [2, 3, 4])
-    ->fetchCollection();
+    ->fetchCollection()
+;
 var_dump($books->hasByPrimary(1)); // false
 var_dump($books->hasByPrimary(2)); // true
 ```
@@ -140,7 +143,8 @@ var_dump($books->hasByPrimary(2)); // true
 $books = \Bitrix\Main\Test\Typography\BookTable::query()
     ->addSelect('*')
     ->whereIn('ID', [2, 3, 4])
-    ->fetchCollection();
+    ->fetchCollection()
+;
 $isEmpty = $books->isEmpty();
 ```
 
@@ -153,7 +157,8 @@ $book1 = \Bitrix\Main\Test\Typography\Book::wakeUp(1);
 $books = \Bitrix\Main\Test\Typography\BookTable::query()
     ->addSelect('*')
     ->whereIn('ID', [2, 3, 4])
-    ->fetchCollection();
+    ->fetchCollection()
+;
 $books->add($book1);
 // или
 $books[] = $book1;
@@ -184,12 +189,14 @@ $books->removeByPrimary(2);
 ```php
 use \Bitrix\Main\Test\Typography\Books;
 use \Bitrix\Main\Test\Typography\Book;
+
 $books = new Books;
 $books[] = (new Book)->setTitle('Title 112');
 $books[] = (new Book)->setTitle('Title 113');
 $books[] = (new Book)
     ->setTitle('Title 114')
-    ->setIsbn('114-000');
+    ->setIsbn('114-000')
+;
 $books->save(true);
 // INSERT INTO ... (`TITLE`, `ISBN`) VALUES
 // ('Title 112', DEFAULT),
@@ -208,7 +215,8 @@ use \Bitrix\Main\Test\Typography\PublisherTable;
 use \Bitrix\Main\Test\Typography\BookTable;
 $books = BookTable::getList()->fetchCollection();
 $publisher = PublisherTable::wakeUpObject(254);
-foreach ($books as $book) {
+foreach ($books as $book)
+{
     $book->setPublisher($publisher);
 }
 $books->save();
@@ -241,27 +249,60 @@ $books->fill(\Bitrix\Main\ORM\Fields\FieldTypeMask::FLAT);
 
 Доступные маски:
 
--  `SCALAR`  -- скалярные поля `ORM\ScalarField`,
+-  `SCALAR`  — скалярные поля `ORM\ScalarField`,
 
--  `EXPRESSION` -- выражения `ORM\ExpressionField`,
+-  `EXPRESSION` — выражения `ORM\ExpressionField`,
 
--  `USERTYPE` -- пользовательские поля,
+-  `USERTYPE` — пользовательские поля,
 
--  `REFERENCE` -- отношения 1:1 и N:1 `ORM\Fields\Relations\Reference`,
+-  `REFERENCE` — отношения 1:1 и N:1 `ORM\Fields\Relations\Reference`,
 
--  `ONE_TO_MANY` -- отношения 1:N `ORM\Fields\Relations\OneToMany`,
+-  `ONE_TO_MANY` — отношения 1:N `ORM\Fields\Relations\OneToMany`,
 
--  `MANY_TO_MANY` -- отношения N:M `ORM\Fields\Relations\ManyToMany`,
+-  `MANY_TO_MANY` — отношения N:M `ORM\Fields\Relations\ManyToMany`,
 
--  `FLAT` -- скалярные поля и выражения,
+-  `FLAT` — скалярные поля и выражения,
 
--  `RELATION` -- все отношения,
+-  `RELATION` — все отношения,
 
--  `ALL` -- абсолютно все доступные поля.
+-  `ALL` — абсолютно все доступные поля.
+
+### Обработать элементы коллекции {#walk}
+
+Метод `walk` перебирает элементы коллекции без использования цикла `foreach`. Метод доступен с версии 26.0.0 главного модуля.
+
+```php
+$books = \Bitrix\Main\Test\Typography\BookTable::getList()
+    ->fetchCollection();
+$books->walk(static function($book)
+{
+    if ($book->getPrice() > 1000)
+    {
+        $book->setActive(false);
+    }
+});
+```
+
+Метод изменяет текущую коллекцию. Новая коллекция не создается.
+
+Используйте `walk` в цепочке вызовов для компактной записи логики:
+
+```php
+$saveResult = \Bitrix\Main\Test\Typography\BookTable::query()
+    ->addSelect('*')
+    ->where('> PRICE', 1000)
+    ->fetchCollection()
+    ->walk(static function($book)
+    {
+        $book->setActive(false);
+    })
+    ->save()
+;
+```
 
 ### Получить список значений поля
 
-Метод `get*List` позволяет получить список значений поля из результата запроса, где `*` -- имя поля в формате `camelCase` с заглавной буквы.
+Метод `get*List` позволяет получить список значений поля из результата запроса, где `*` — имя поля в формате `camelCase` с заглавной буквы.
 
 ```php
 $books = \Bitrix\Main\Test\Typography\BookTable::getList()
@@ -271,7 +312,7 @@ $titles = $books->getTitleList();
 
 ### Получить коллекцию
 
-Метод `get*Collection` возвращает уникальные объекты в виде коллекции, где `*` -- имя поля в формате `camelCase` с заглавной буквы. Метод доступен только для полей отношений: `Reference`, `OneToMany`, `ManyToMany` .
+Метод `get*Collection` возвращает уникальные объекты в виде коллекции, где `*` — имя поля в формате `camelCase` с заглавной буквы. Метод доступен только для полей отношений: `Reference`, `OneToMany`, `ManyToMany` .
 
 ```php
 $authors = \Bitrix\Main\Test\Typography\AuthorTable::getList([
@@ -311,11 +352,13 @@ $books = \Bitrix\Main\Test\Typography\Books::wakeUp([
 ```php
 $books = \Bitrix\Main\Test\Typography\BookTable::getList()
     ->whereIn('ID', [1, 2])
-    ->fetchCollection();
+    ->fetchCollection()
+;
 
 $anotherBooks = \Bitrix\Main\Test\Typography\BookTable::getList()
     ->whereIn('ID', [3, 4])
-    ->fetchCollection();
+    ->fetchCollection()
+;
 
 $books = $books->merge($anotherBooks);
 ```
