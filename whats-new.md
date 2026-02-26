@@ -20,6 +20,10 @@ title: Что нового
 
 ### 2026
 
+#### 26 февраля
+
+- Добавили описание подключения key-value хранилищ в статью [Конфигурация](./pages/database/configuration.md#key-value).
+
 #### 19 февраля
 
 - Добавили описание преобразования данных в статью [Request и Response](./pages/framework/request-response.md#converter).
