@@ -19,25 +19,25 @@ description: 'NoSQL. Работа с базой данных в Bitrix: лучш
 
 ```php
 'connections' => [
-	'value' => [
-		'default' => [
-			'className' => \Bitrix\Main\DB\MysqliConnection::class,
-			// настройки существующего подключения в БД
-		],
-		'custom.redis' => [
-			'className' => \Bitrix\Main\Data\RedisConnection::class,
-			'port' => 6379,
-			'host' => '127.0.0.1',
-			'serializer' => \Redis::SERIALIZER_IGBINARY,
-		],
-		'custom2.redis' => [
-			'className' => \Bitrix\Main\Data\RedisConnection::class,
-			'port' => 6379,
-			'host' => '127.0.0.4',
-			'serializer' => \Redis::SERIALIZER_IGBINARY,
-		],
-	],
-	'readonly' => true,
+    'value' => [
+        'default' => [
+            'className' => \Bitrix\Main\DB\MysqliConnection::class,
+            // настройки существующего подключения в БД
+        ],
+        'custom.redis' => [
+            'className' => \Bitrix\Main\Data\RedisConnection::class,
+            'port' => 6379,
+            'host' => '127.0.0.1',
+            'serializer' => \Redis::SERIALIZER_IGBINARY,
+        ],
+        'custom2.redis' => [
+            'className' => \Bitrix\Main\Data\RedisConnection::class,
+            'port' => 6379,
+            'host' => '127.0.0.4',
+            'serializer' => \Redis::SERIALIZER_IGBINARY,
+        ],
+    ],
+    'readonly' => true,
 ]
 ```
 
@@ -60,36 +60,36 @@ Redis поддерживает два подхода к организации �
 ```php
 // bitrix/.settings.php
 return [
-//...        
-	'session' => [
-		'value' => [
-			'mode' => 'default',
-			'handlers' => [
-				'general' => [
-					'type' => 'redis',   
-					'servers' => [
-						[
-							'port' => 6379,
-							'host' => '127.0.0.1',
-						],
-						[
-							'port' => 6379,
-							'host' => '127.0.0.2',
-						],
-						[
-							'port' => 6379,
-							'host' => '127.0.0.3',
-						],
-						'serializer' => \Redis::SERIALIZER_IGBINARY,
-						'persistent' => false,
-						'failover' => \RedisCluster::FAILOVER_DISTRIBUTE,
-						'timeout' => null,
-						'read_timeout' => null,
-					],
-				],           
-			],
-		]                   
-	] 
+//...
+    'session' => [
+        'value' => [
+            'mode' => 'default',
+            'handlers' => [
+                'general' => [
+                    'type' => 'redis',   
+                    'servers' => [
+                        [
+                            'port' => 6379,
+                            'host' => '127.0.0.1',
+                        ],
+                        [
+                            'port' => 6379,
+                            'host' => '127.0.0.2',
+                        ],
+                        [
+                            'port' => 6379,
+                            'host' => '127.0.0.3',
+                        ],
+                        'serializer' => \Redis::SERIALIZER_IGBINARY,
+                        'persistent' => false,
+                        'failover' => \RedisCluster::FAILOVER_DISTRIBUTE,
+                        'timeout' => null,
+                        'read_timeout' => null,
+                    ],
+                ],
+            ],
+        ]
+    ] 
 ];
 ```
 
@@ -111,22 +111,22 @@ return [
 
 ```php
 return [
-	'session' => [
-		'value' => [
-			'mode' => 'default',
-			'handlers' => [
-				'general' => [
-					'type' => 'redis',
-					'servers' => [
-						[
-							'port' => '30015',
-							'host' => '127.0.0.1'
-						],
-					],
-				],
-			],
-		],
-	],
+    'session' => [
+        'value' => [
+            'mode' => 'default',
+            'handlers' => [
+                'general' => [
+                    'type' => 'redis',
+                    'servers' => [
+                        [
+                            'port' => '30015',
+                            'host' => '127.0.0.1'
+                        ],
+                    ],
+                ],
+            ],
+        ],
+    ],
 ];
 ```
 
@@ -163,23 +163,23 @@ $resource->setnx('foo', 'bar');
 
 ```php
 'connections' => [
-	'value' => [
-		'default' => [
-			'className' => \Bitrix\Main\DB\MysqliConnection::class,
-			//... настройки существующего подключения в БД
-		],
-		'custom.memcached' => [
-			'className' => \Bitrix\Main\Data\MemcachedConnection::class,
-			'port' => 11211,
-			'host' => '127.0.0.1',
-		],
-      'custom2.memcached' => [
-        'className' => \Bitrix\Main\Data\MemcachedConnection::class,
-        'port' => 6379,
-        'host' => '127.0.0.4',
-		],
-	],
-	'readonly' => true,
+    'value' => [
+        'default' => [
+            'className' => \Bitrix\Main\DB\MysqliConnection::class,
+            //... настройки существующего подключения в БД
+        ],
+        'custom.memcached' => [
+            'className' => \Bitrix\Main\Data\MemcachedConnection::class,
+            'port' => 11211,
+            'host' => '127.0.0.1',
+        ],
+        'custom2.memcached' => [
+            'className' => \Bitrix\Main\Data\MemcachedConnection::class,
+            'port' => 6379,
+            'host' => '127.0.0.4',
+        ],
+    ],
+    'readonly' => true,
 ]
 ```
 
@@ -189,28 +189,28 @@ $resource->setnx('foo', 'bar');
 
 ```php
 'connections' => [
-	'value' => [
-		'default' => [
-			'className' => \Bitrix\Main\DB\MysqliConnection::class,
-			//... настройки существующего подключения в БД
-				],
-		'custom.memcached' => [
-			'className' => \Bitrix\Main\Data\MemcachedConnection::class,
-			'servers' => [
-				[
-				'port' => 11211,
-				'host' => '127.0.0.1',
-				'weight' => 1,  
-				],
-				[
-				'port' => 11211,
-				'host' => '127.0.0.2',
-				'weight' => 1, 
-				],
-			],
-		],
-	],
-	'readonly' => true,
+    'value' => [
+        'default' => [
+            'className' => \Bitrix\Main\DB\MysqliConnection::class,
+            //... настройки существующего подключения в БД
+        ],
+        'custom.memcached' => [
+            'className' => \Bitrix\Main\Data\MemcachedConnection::class,
+            'servers' => [
+                [
+                    'port' => 11211,
+                    'host' => '127.0.0.1',
+                    'weight' => 1,  
+                ],
+                [
+                    'port' => 11211,
+                    'host' => '127.0.0.2',
+                    'weight' => 1, 
+                ],
+            ],
+        ],
+    ],
+    'readonly' => true,
 ]
 ```
 
